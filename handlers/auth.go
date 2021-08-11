@@ -35,6 +35,7 @@ func Register(w http.ResponseWriter, r *http.Request) {
 
 	data := InitPageData(w, r, "register", "/register", "Register new account")
 	data.Data = types.AuthData{Flashes: utils.GetFlashes(w, r, authSessionName), CsrfField: csrf.TemplateField(r)}
+	data.Meta.Title = "Sign-Up Page | Redot.com"
 
 	err := registerTemplate.ExecuteTemplate(w, "layout", data)
 	if err != nil {
@@ -151,6 +152,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 	data := InitPageData(w, r, "login", "/login", "Login")
 	data.Data = types.AuthData{Flashes: utils.GetFlashes(w, r, authSessionName), CsrfField: csrf.TemplateField(r)}
+	data.Meta.Title = "Sign-In Page | Redot.com"
 
 	err := loginTemplate.ExecuteTemplate(w, "layout", data)
 	if err != nil {
